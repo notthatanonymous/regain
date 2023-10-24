@@ -121,7 +121,7 @@ def test_all(X, theta):
             train.shape[0] - int(train.shape[0] * 0.25))
         tim = time.time()
         ss = GraphicalModelStabilitySelection(
-            est, n_repetitions=10, iid=False, sampling_size=sampling_size,
+            est, n_repetitions=10, sampling_size=sampling_size,
             param_grid={'alpha': np.linspace(1e-5, 1e3, 100)})
         ss.fit(X[train, :])
         times['stars'].append(time.time() - tim)
