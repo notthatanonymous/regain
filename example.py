@@ -122,7 +122,7 @@ def test_all(X, theta):
         tim = time.time()
         ss = GraphicalModelStabilitySelection(
             est, n_repetitions=10, sampling_size=sampling_size,
-            params_grid={'alpha': np.linspace(1e-5, 1e3, 100)})
+            param_grid={'alpha': np.linspace(1e-5, 1e3, 100)})
         ss.fit(X[train, :])
         times['stars'].append(time.time() - tim)
         selected_parameters['stars'].append(ss.best_estimator_.alpha)
