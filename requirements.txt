@@ -5,6 +5,7 @@ scipy>=0.16.1,>=1.0.0
 scikit_learn>=0.24.2
 #setuptools
 six
+matplotlib
 networkx
 pandas
 
