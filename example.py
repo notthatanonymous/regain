@@ -8,7 +8,7 @@ from regain import datasets, utils
 from regain.covariance import LatentTimeGraphicalLasso
 
 
-np.random.seed(0)
+#np.random.seed(0)
 
 # setting 1
 alpha = 0.45
