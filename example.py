@@ -29,7 +29,7 @@ X, y = data.X, data.y
 
 
 mdl = LatentTimeGraphicalLasso(
-    assume_centered=0, verbose=1, rtol=1e-5, tol=1e-5, max_iter=250,
+    assume_centered=0, verbose=0, rtol=1e-5, tol=1e-5, max_iter=250,
     rho=1. / np.sqrt(X.shape[0]))
 
 
@@ -37,7 +37,7 @@ mdl = LatentTimeGraphicalLasso(
 
 param_grid = dict(tau=[3], alpha=[.45, 1], beta=[20, 50], eta=[10])
 cv = StratifiedShuffleSplit(2, test_size=0.2)
-ltgl = GridSearchCV(mdl, param_grid, cv=cv, verbose=2)
+ltgl = GridSearchCV(mdl, param_grid, cv=cv, verbose=1)
 ltgl.fit(X, y)
 
 
