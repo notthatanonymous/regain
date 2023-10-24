@@ -92,12 +92,12 @@ def test_all(X, theta):
 
         for t in ['likelihood', 'bic', 'ebic', 'ebic_m']:
             scoref = partial(score, score_type=t)
-            tim = time.clock()
+            tim = time.time()
             rscv = RandomizedSearchCV(
                 est, param_distributions={'alpha': np.logspace(-3, -1, 100)},
                 cv=5, scoring=scoref)
             rscv.fit(X[train, :])
-            times[t].append(time.clock() - tim)
+            times[t].append(time.time() - tim)
 
             selected_parameters[t].append(rscv.best_estimator_.alpha)
             train_MCC[t].append(
@@ -119,12 +119,12 @@ def test_all(X, theta):
         sampling_size = min(
             int(10 * np.sqrt(train.shape[0])),
             train.shape[0] - int(train.shape[0] * 0.25))
-        tim = time.clock()
+        tim = time.time()
         ss = GraphicalModelStabilitySelection(
             est, n_repetitions=10, sampling_size=sampling_size,
             params_grid={'alpha': np.linspace(1e-5, 1e3, 100)})
         ss.fit(X[train, :])
-        times['stars'].append(time.clock() - tim)
+        times['stars'].append(time.time() - tim)
         selected_parameters['stars'].append(ss.best_estimator_.alpha)
         train_MCC['stars'].append(
             matthews_corrcoef(
