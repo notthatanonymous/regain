@@ -29,16 +29,16 @@ X, y = data.X, data.y
 
 
 mdl = LatentTimeGraphicalLasso(
-    assume_centered=0, verbose=0, rtol=1e-5, tol=1e-5, max_iter=250,
+    assume_centered=0, verbose=1, rtol=1e-5, tol=1e-5, max_iter=250,
     rho=1. / np.sqrt(X.shape[0]))
 
 
 # tau=[1, 3], alpha=[.45, 1], beta=[20, 50], eta=[5, 10]
 
-param_grid = dict(tau=[1], alpha=[.45], beta=[20], eta=[5])
-cv = StratifiedShuffleSplit(2, test_size=0.2)
+param_grid = dict(tau=[1, 3], alpha=[.45, 1], beta=[20, 50], eta=[5, 10])
+cv = StratifiedShuffleSplit(3, test_size=0.2)
 ltgl = GridSearchCV(mdl, param_grid, cv=cv, verbose=2)
 ltgl.fit(X, y)
 
 
-print(utils.structure_error(data.thetas, ltgl.best_estimator_.precision_))
+print(f"Score: {utils.structure_error(data.thetas, ltgl.best_estimator_.precision_)['accuracy']}")
