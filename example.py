@@ -7,7 +7,7 @@ import time
 from sklearn.covariance import empirical_covariance
 
 from regain.covariance.graphical_lasso_ import GraphicalLasso
-from regain.datasets.datasets import make_dataset
+from regain.datasets import make_dataset
 from regain.scores import log_likelihood, BIC, EBIC, EBIC_m
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.model_selection import ShuffleSplit
