@@ -35,8 +35,8 @@ mdl = LatentTimeGraphicalLasso(
 
 # tau=[1, 3], alpha=[.45, 1], beta=[20, 50], eta=[5, 10]
 
-param_grid = dict(tau=[1, 3], alpha=[.45, 1], beta=[20, 50], eta=[5, 10])
-cv = StratifiedShuffleSplit(3, test_size=0.2)
+param_grid = dict(tau=[3], alpha=[.45, 1], beta=[20, 50], eta=[10])
+cv = StratifiedShuffleSplit(2, test_size=0.2)
 ltgl = GridSearchCV(mdl, param_grid, cv=cv, verbose=2)
 ltgl.fit(X, y)
 
