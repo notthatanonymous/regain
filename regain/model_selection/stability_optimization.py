@@ -290,7 +290,7 @@ class GraphicalModelStabilitySelection(GridSearchCV):
             estimator=estimator,
             scoring=scoring,
             n_jobs=n_jobs,
-            iid=iid,
+           # iid=iid,
             refit=refit,
             cv=StratifiedShuffleSplit(train_size=sampling_size, n_splits=n_repetitions),
             verbose=verbose,
